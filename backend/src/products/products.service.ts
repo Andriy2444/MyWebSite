@@ -15,12 +15,12 @@ export class ProductsService {
   }
 
   async findAll(): Promise<Product[]> {
-    return this.productModel.find().exec();
+    return this.productModel.find().populate('category').exec();
   }
 
   async findOne(id: string): Promise<Product> {
-    const product = await this.productModel.findById(id).exec();
-    if (!product) throw new NotFoundException('Product ${id} not found');
+    const product = await this.productModel.findById(id).populate('category').exec();
+    if (!product) throw new NotFoundException(`Product ${id} not found`);
     return product;
   }
 
@@ -32,9 +32,9 @@ export class ProductsService {
     return updated;
   }
 
-  async delete(id: string): Promise<Product> {
+  async delete(id: string): Promise<{message: string}> {
     const product = await this.productModel.findByIdAndDelete(id).exec();
-    if (!product) throw new NotFoundException('Product ${id} not found');
-    return product;
+    if (!product) throw new NotFoundException(`Product ${id} not found`);
+    return { message: `Product ${id} deleted` };
   }
 }

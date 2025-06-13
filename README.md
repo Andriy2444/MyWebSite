@@ -6,22 +6,30 @@ A fullstack web application built with **NestJS** (backend) and **React** (front
 
 ## 🚀 Tech Stack
 
-### Backend (NestJS)
-- [NestJS](https://nestjs.com/) — Progressive Node.js framework
-- [TypeScript](https://www.typescriptlang.org/)
-- [PostgreSQL](https://www.postgresql.org/) and [Mongodb](https://www.mongodb.com/) — Database
-- [Prisma](https://www.prisma.io/) and [Mongoose](https://mongoosejs.com) — ORM
-- [JWT](https://jwt.io/) — Authentication
-- [bcrypt](https://www.npmjs.com/package/bcrypt) — Password hashing
+### 🧠 Backend (NestJS)
 
-### Frontend (React)
-- planned
+* ![NestJS](https://img.shields.io/badge/-NestJS-E0234E?style=flat-square&logo=nestjs&logoColor=white)
+* ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+* ![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-336791?style=flat-square&logo=postgresql&logoColor=white)
+* ![MongoDB](https://img.shields.io/badge/-MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white)
+* ![Prisma](https://img.shields.io/badge/-Prisma-2D3748?style=flat-square&logo=prisma&logoColor=white)
+* ![Mongoose](https://img.shields.io/badge/-Mongoose-880000?style=flat-square&logo=mongoose&logoColor=white)
+* ![JWT](https://img.shields.io/badge/-JWT-000000?style=flat-square&logo=jsonwebtokens&logoColor=white)
+* ![bcrypt](https://img.shields.io/badge/-bcrypt-00599C?style=flat-square&logo=lock&logoColor=white)
 
-### DevOps / Tools
-- [Docker](https://www.docker.com/) — Containerization
-- [Docker Compose](https://www.docker.com/compose/) — Multi-container orchestration
-- [dotenv](https://www.npmjs.com/package/dotenv) — Environment config loader
+---
 
+### 🎨 Frontend (React) planned
+
+- ![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=black)
+
+---
+
+### ⚙️ DevOps / Tools
+
+- ![Docker](https://img.shields.io/badge/-Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+- ![Docker Compose](https://img.shields.io/badge/-Docker%20Compose-2496ED?style=flat-square&logo=docker&logoColor=white)
+- ![dotenv](https://img.shields.io/badge/-dotenv-ECD53F?style=flat-square&logo=gnubash&logoColor=black)
 
 
 ---
@@ -56,7 +64,7 @@ git clone https://github.com/Andriy2444/MyWebSite.git
 cd MyWebSite
 ```
 
-### 2. 🛠️ Backend Setup
+### 2. 🧠 Backend Setup
 ```bash
 cd backend
 npm install
@@ -78,7 +86,7 @@ npm run start
 
 ---
 
-### 3. 🖥️ Frontend Setup
+### 3. 🎨 Frontend Setup
 planned
 
 ---

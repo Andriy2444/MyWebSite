@@ -14,8 +14,33 @@ export class ProductsService {
       return created.save();
   }
 
-  async findAll(): Promise<Product[]> {
-    return this.productModel.find().populate('category').exec();
+  async findAll(filters: {
+    minPrice?: number;
+    maxPrice?: number;
+    category?: string;
+    search?: string;
+  }) {
+    const query: any = {};
+
+    if (filters.minPrice !== undefined || filters.maxPrice !== undefined) {
+      query.price = {};
+      if (filters.minPrice !== undefined) {
+        query.price.$gte = Number(filters.minPrice);
+      }
+      if (filters.maxPrice !== undefined) {
+        query.price.$lte = Number(filters.maxPrice);
+      }
+    }
+
+    if (filters.category) {
+      query.name = { $regex: filters.category, $options: 'i' };
+    }
+
+    if (filters.search) {
+      query.name = { $regex: filters.search, $options: 'i' };
+    }
+
+    return this.productModel.find(query).populate('category').exec();
   }
 
   async findOne(id: string): Promise<Product> {

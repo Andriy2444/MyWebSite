@@ -108,10 +108,28 @@ docker ps
 
 ## 📦 API Endpoints
 - `GET /products` — Get all products
-- `GET /products/:id` — Get a product by id
+- `GET /categories` — Get all categories
+<br><br>
 - `POST /products` — Create a new product
+- `POST /categories,` — Create a new categories
+<br><br>
+- `GET /products/:id` — Get a product by id
 - `PUT /products/:id` — Update product by id
 - `DELETE /products/:id` — Delete product by id
+<br><br>
+- `GET /categories/:id` — Get all product from categories by id
+- `DELETE /categories/:id` — Delete categories by id
+<br><br>
+- `GET /products?` - Get a list of products with optional query filters
+
+### Query parameters:
+
+| Parameter  | Type    | Description                              | Example           |
+|------------|---------|----------------------------------------|-------------------|
+| `minPrice` | number  | Minimum product price (inclusive)      | `minPrice=10`     |
+| `maxPrice` | number  | Maximum product price (inclusive)      | `maxPrice=120`    |
+| `search`   | string  | Search by product name or description  | `search=Banana`   |
+| `category` | string  | Filter by product category              | `category=Fruit`  |
 
 ---
 

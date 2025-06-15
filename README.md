@@ -38,19 +38,22 @@ A fullstack web application built with **NestJS** (backend) and **React** (front
 ```
 /MyWebSite
 ├── backend/
+│ ├── prisma/
 │ ├── src/
 │ │ ├── auth/
-│ │ ├── users/
+│ │ ├── cart/
+│ │ ├── categories/
+│ │ ├── prisma/
 │ │ ├── products/
+│ │ ├── users/
 │ │ ├── app.module.ts
 │ │ └── main.ts
-│ ├── prisma/
 │ ├── test/
 │ ├── .env
 │ └── package.json
 ├── frontend/             # (planned)
-├── docker-compose.yml
 ├── .gitignore
+├── docker-compose.yml
 └── README.md # This file
 ```
 
@@ -109,6 +112,7 @@ docker ps
 ## 📦 API Endpoints
 - `GET /products` — Get all products
 - `GET /categories` — Get all categories
+- `GET /cart` — Get your cart
 <br><br>
 - `POST /products` — Create a new product
 - `POST /categories,` — Create a new categories
@@ -120,17 +124,23 @@ docker ps
 - `GET /categories/:id` — Get all product from categories by id
 - `DELETE /categories/:id` — Delete categories by id
 <br><br>
+- `POST /cart/add/:id,` — Added product from cart
+- `PATCH /cart/decrease/:id` — Decrease product by 1
+- `DELETE /cart/remove/:id` — Remove product by id from cart
+- `DELETE /cart/clear` — Clear your cart
+<br><br>
 - `GET /products?` - Get a list of products with optional query filters
 
 ### Query parameters:
 
-| Parameter  | Type    | Description                              | Example           |
-|------------|---------|----------------------------------------|-------------------|
-| `minPrice` | number  | Minimum product price (inclusive)      | `minPrice=10`     |
-| `maxPrice` | number  | Maximum product price (inclusive)      | `maxPrice=120`    |
-| `search`   | string  | Search by product name or description  | `search=Banana`   |
-| `category` | string  | Filter by product category              | `category=Fruit`  |
-
+| Parameter  | Type    | Description                              | Example         |
+|------------|---------|------------------------------------------|-----------------|
+| `minPrice` | number  | Minimum product price (inclusive)        | `minPrice=10`   |
+| `maxPrice` | number  | Maximum product price (inclusive)        | `maxPrice=120`  |
+| `category` | string  | Filter by product category(`_id`)        | `category=ID`   |
+| `search`   | string  | Search by product name or description    | `search=Banana` |
+| `page`     | number  | Page number for pagination (starts at 1) | `page=2`        |
+| `limit`    | number  | Number of products per page              | `limit=10`      |
 ---
 
 ## ⚖️ License

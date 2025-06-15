@@ -15,13 +15,22 @@ export class ProductsController {
   }
 
   @Get()
-  findAll(
+  async findAll(
     @Query('minPrice') minPrice?: number,
     @Query('maxPrice') maxPrice?: number,
     @Query('category') category?: string,
     @Query('search') search?: string,
+    @Query('page') page?: number,
+    @Query('limit') limit?: number,
   ) {
-    return this.productsService.findAll({ minPrice, maxPrice, category, search });
+    return this.productsService.findAll({
+      minPrice: minPrice ? +minPrice : undefined,
+      maxPrice: maxPrice ? +maxPrice : undefined,
+      category,
+      search,
+      page: page ? +page : 1,
+      limit: limit ? +limit : 10,
+    });
   }
 
   @Get(':id')

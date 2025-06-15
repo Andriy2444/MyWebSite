@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Get, Delete, UseGuards, Request } from '@nestjs/common';
+import { Controller, Post, Body, Get, Patch, Delete, UseGuards, Request, Param } from '@nestjs/common';
 import { CartService } from './cart.service';
 import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 
@@ -7,8 +7,8 @@ import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
 export class CartController {
   constructor(private readonly cartService: CartService) {}
 
-  @Post('add')
-  async add(@Request() req, @Body('productId') productId: string, @Body('quantity') quantity: number) {
+  @Post('add/:id')
+  async add(@Request() req, @Param('id') productId: string, @Body('quantity') quantity: number) {
     const userId = req.user.userId;
     return this.cartService.addToCart(userId, productId, quantity);
   }
@@ -19,10 +19,16 @@ export class CartController {
     return this.cartService.getCart(userId);
   }
 
-  @Delete('remove')
-  async remove(@Request() req, @Body('productId') productId: string) {
+  @Delete('remove/:id')
+  async remove(@Request() req, @Param('id') productId: string) {
     const userId = req.user.userId;
     return this.cartService.removeFromCart(userId, productId);
+  }
+
+  @Patch('decrease/:id')
+  async decreaseItem(@Request() req, @Param('id') productId: string) {
+    const userId = req.user.userId;
+    return this.cartService.decreaseFromCart(userId, productId);
   }
 
   @Delete('clear')

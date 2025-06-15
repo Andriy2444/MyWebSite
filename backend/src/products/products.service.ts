@@ -19,6 +19,8 @@ export class ProductsService {
     maxPrice?: number;
     category?: string;
     search?: string;
+    page?: number;
+    limit?: number;
   }) {
     const query: any = {};
 
@@ -33,14 +35,28 @@ export class ProductsService {
     }
 
     if (filters.category) {
-      query.name = { $regex: filters.category, $options: 'i' };
+      query.category = filters.category;
     }
 
     if (filters.search) {
       query.name = { $regex: filters.search, $options: 'i' };
     }
 
-    return this.productModel.find(query).populate('category').exec();
+    const page = filters.page && filters.page > 0 ? filters.page : 1;
+    const limit = filters.limit && filters.limit > 0 ? filters.limit : 10;
+    const skip = (page - 1) * limit;
+
+    const [products, total] = await Promise.all([
+      this.productModel.find(query).populate('category').skip(skip).limit(limit).exec(),
+      this.productModel.countDocuments(query),
+    ]);
+
+    return {
+      data: products,
+      total,
+      page,
+      lastPage: Math.ceil(total / limit),
+    };
   }
 
   async findOne(id: string): Promise<Product> {
@@ -62,4 +78,5 @@ export class ProductsService {
     if (!product) throw new NotFoundException(`Product ${id} not found`);
     return { message: `Product ${id} deleted` };
   }
+
 }

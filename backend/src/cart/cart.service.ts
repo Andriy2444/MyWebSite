@@ -28,6 +28,19 @@ export class CartService {
     return this.cartModel.deleteOne({ userId: userId, product: productId });
   }
 
+  async decreaseFromCart(userId: string, productId: string) {
+  const item = await this.cartModel.findOne({ userId, product: productId });
+
+  if (!item) return null;
+
+  if (item.quantity > 1) {
+    item.quantity -= 1;
+    return item.save();
+  } else {
+    return this.cartModel.deleteOne({ userId, product: productId });
+  }
+}
+
   async clearCart(userId: string) {
     return this.cartModel.deleteMany({ userId: userId });
   }

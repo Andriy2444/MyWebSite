@@ -14,6 +14,7 @@ services:
       - POSTGRES_DB=${POSTGRES_DB}
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
 
   mongodb:
     image: mongo:8
@@ -40,9 +41,10 @@ services:
     env_file: /backend/.env
     ports:
       - "3000:3000"
-    command: npm run start:prod
+    command: npm run start:dev
     volumes:
       - ./backend:/app
+    restart: unless-stopped
 
 volumes:
   postgres_data:

@@ -46,6 +46,16 @@ services:
       - ./backend:/app
     restart: unless-stopped
 
+  frontend:
+    build:
+      context: ./frontend
+    container_name: react_frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
 volumes:
   postgres_data:
   mongo-data:

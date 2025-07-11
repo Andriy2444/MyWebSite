@@ -19,9 +19,13 @@ A fullstack web application built with **NestJS** (backend) and **React** (front
 
 ---
 
-### 🎨 Frontend (React) planned
+### 🎨 Frontend 
 
 - ![React](https://img.shields.io/badge/-React-61DAFB?style=flat-square&logo=react&logoColor=black)
+- ![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+- ![Vite](https://img.shields.io/badge/-Vite-646CFF?style=flat-square&logo=vite&logoColor=white)
+- ![Axios](https://img.shields.io/badge/-Axios-5A29E4?style=flat-square&logo=axios&logoColor=white)
+- ![React Router](https://img.shields.io/badge/-React%20Router-CA4245?style=flat-square&logo=react-router&logoColor=white)
 
 ---
 
@@ -51,7 +55,22 @@ A fullstack web application built with **NestJS** (backend) and **React** (front
 │ ├── test/
 │ ├── .env
 │ └── package.json
-├── frontend/             # (planned)
+├── frontend/
+│ ├── public/
+│ ├── src/
+│ │ ├── assets/
+│ │ ├── components/
+│ │ │ └── Navbar/
+│ │ ├── pages/
+│ │ │ ├── Auth/
+│ │ │ ├── Home/
+│ │ │ └── Profile/
+│ │ ├── router/
+│ │ ├── products/
+│ │ ├── services/
+│ │ ├── App.tsx
+│ │ └── main.tsx
+│ └── package.json
 ├── .gitignore
 ├── docker-compose.yml
 └── README.md # This file
@@ -67,34 +86,11 @@ git clone https://github.com/Andriy2444/MyWebSite.git
 cd MyWebSite
 ```
 
-### 2. 🧠 Backend Setup
-```bash
-cd backend
-npm install
-```
-- Set up your `.env` file (example below)
-```angular2html
-DATABASE_URL="postgresql://user:password@localhost:5432/mydb"
-MONGODB_URI="mongodb://user:password@localhost:27018/mydb"
-JWT_SECRET="your_jwt_secret"
-```
-- Run database migration:
-```bash
-npx prisma migrate dev
-```
-- Start the backend:
-```bash
-npm run start
-```
+### 2. Please make sure you have installed:
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/)  
+- A `.env` file for the backend (there is a sample at `backend/.env.example` — just rename or copy it to `.env`)
 
----
-
-### 3. 🎨 Frontend Setup
-planned
-
----
-
-### 4. 🐳 Docker Setup
+### 3. 🐳 Docker Start
 ```bash
 docker-compose up --build
 docker ps
